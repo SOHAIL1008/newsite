@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h2 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Slider */
+
+        .slick-slide {
+            margin: 0px 20px;
+        }
+
+        .slick-slide img {
+            width: 100%;
+        }
+
+        .slick-slider {
+            position: relative;
+            display: block;
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -khtml-user-select: none;
+            -ms-touch-action: pan-y;
+            touch-action: pan-y;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .slick-list {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .slick-list:focus {
+            outline: none;
+        }
+
+        .slick-list.dragging {
+            cursor: pointer;
+            cursor: hand;
+        }
+
+        .slick-slider .slick-track,
+        .slick-slider .slick-list {
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        .slick-track {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: block;
+        }
+
+        .slick-track:before,
+        .slick-track:after {
+            display: table;
+            content: '';
+        }
+
+        .slick-track:after {
+            clear: both;
+        }
+
+        .slick-loading .slick-track {
+            visibility: hidden;
+        }
+
+        .slick-slide {
+            display: none;
+            float: left;
+            height: 100%;
+            min-height: 1px;
+        }
+
+        [dir='rtl'] .slick-slide {
+            float: right;
+        }
+
+        .slick-slide img {
+            display: block;
+        }
+
+        .slick-slide.slick-loading img {
+            display: none;
+        }
+
+        .slick-slide.dragging img {
+            pointer-events: none;
+        }
+
+        .slick-initialized .slick-slide {
+            display: block;
+        }
+
+        .slick-loading .slick-slide {
+            visibility: hidden;
+        }
+
+        .slick-vertical .slick-slide {
+            display: block;
+            height: auto;
+            border: 1px solid transparent;
+        }
+
+        .slick-arrow.slick-hidden {
+            display: none;
+        }
+
+        .slide {
+            /* background-color: #fff; */
+            height: 370px;
+            margin: 25px;
+        }
+
+        .bg-gray {
+            background: #585858;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            outline: 10px solid #fff;
+        }
+
+
+        /* Add custom class for active slide */
+        .slick-slide.slick-center {
+            transform: scale(1.2);
+            /* Increase scale for active slide */
+            z-index: 1;
+            /* Place active slide on top */
+            transition: transform 0.5s, z-index 0.5s;
+        }
+
+        .slick-slide.slick-center img {
+            width: 100%;
+            height: 330px;
+            margin-top: 20px;
+        }
+
+        /* Apply perspective effect to non-active slides */
+        .slick-slide:not(.slick-center) {
+            transform: perspective(1000px) translateZ(-70px);
+            transition: transform 0.5s;
+        }
+
+        /* Your existing styles here */
+
+        /* Make the slider container responsive */
+        .customer-logos {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Adjust slide width for responsiveness */
+        .slide {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+
+        /* Adjust slide padding for smaller screens */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <div class="container-fluid bg-gray">
+        <section class="customer-logos slider" style="margin-bottom: 30px;">
+            <div class="slide"><img src="/slider-1.webp"></div>
+            <div class="slide"><img src="/slider-1.webp"></div>
+            <div class="slide"><img src="/slider-1.webp"></div>
+            <div class="slide"><img src="/slider-1.webp"></div>
+            <div class="slide"><img src="/slider-1.webp"></div>
+            <div class="slide"><img src="/slider-1.webp"></div>
+            <div class="slide"><img src="/slider-1.webp"></div>
+        </section>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.customer-logos').slick({
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 303300, // Adjust the speed
+                arrows: false,
+                dots: false,
+                pauseOnHover: false,
+                centerMode: true,
+                centerPadding: '1%', // Adjust the spacing between slides
+                responsive: [
+                    {
+                        breakpoint: 1400,
+                        settings: {
+                            slidesToShow: 3 // Change to 2 for max-width 991px
+                        }
+                    },
+                    {
+                        breakpoint: 991,
+                        settings: {
+                            slidesToShow: 3 // Change to 2 for max-width 768px
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+
+</html>

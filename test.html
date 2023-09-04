@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Slider */
+        .customer-logos {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .slide {
+            height: 370px;
+            margin: 25px;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            outline: 10px solid #fff;
+        }
+
+        /* Add custom class for active slide */
+        .slick-slide.slick-center {
+            transform: scale(1.2);
+            z-index: 1;
+            transition: transform 0.5s, z-index 0.5s;
+        }
+
+        .slick-slide.slick-center img {
+            width: 100%;
+            height: 330px;
+            margin-top: 20px;
+        }
+
+        /* Apply perspective effect to non-active slides */
+        .slick-slide:not(.slick-center) {
+            transform: perspective(1000px) translateZ(-70px);
+            transition: transform 0.5s;
+        }
+
+        /* Adjust slide padding for smaller screens */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+
+    <div class="container-fluid bg-gray">
+        <h2>Our Partners</h2>
+        <section class="customer-logos slider" style="margin-bottom: 30px;">
+            <div class="slide"><img src="/slider-1.webp"></div>
+            <div class="slide"><img src="/slider-1.webp"></div>
+            <div class="slide"><img src="/slider-1.webp"></div>
+            <div class="slide"><img src="/slider-1.webp"></div>
+            <div class="slide"><img src="/slider-1.webp"></div>
+            <div class="slide"><img src="/slider-1.webp"></div>
+            <div class="slide"><img src="/slider-1.webp"></div>
+        </section>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.customer-logos').slick({
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 303300, // Adjust the speed
+                arrows: false,
+                dots: false,
+                pauseOnHover: false,
+                centerMode: true,
+                centerPadding: '1%', // Adjust the spacing between slides
+                responsive: [
+                    {
+                        breakpoint: 1400,
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 991,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+
+</html>
